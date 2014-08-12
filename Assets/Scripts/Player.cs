@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 	
 	const uint maxNumPlayers = 5;
 	const float wheelBodyDistance = 0.8f;
+	const float cameraSmoothness = 0.5f;
 
 	uint numPlayers = 0;
 
@@ -42,8 +43,11 @@ public class Player : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
+		Camera.main.transform.position = Vector3.Lerp(transform.position, Camera.main.transform.position, Mathf.Exp(-Time.deltaTime * cameraSmoothness));
+		Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -10);
+
 		foreach(var controller in wheelController)
 		{
 			rigidbody2D.AddForceAtPosition(controller.Direction * controller.Speed, controller.transform.position);
