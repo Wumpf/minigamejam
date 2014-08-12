@@ -3,15 +3,20 @@ using System.Collections;
 
 abstract public class PlayerController : MonoBehaviour
 {
+	private Quaternion baseRotation;
+
 	// Use this for initialization
-	public abstract void Start ();
+	public virtual void Start ()
+	{
+		baseRotation = transform.rotation;
+	}
 	
 	// Update is called once per frame
 	public virtual void Update()
 	{
 		Direction.Normalize();
 		float angle = Mathf.Atan2(-Direction.x, Direction.y) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)) * baseRotation;
 	}
 
 

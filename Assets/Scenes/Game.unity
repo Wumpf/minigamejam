@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 316765180}
   - 212: {fileID: 316765179}
+  - 108: {fileID: 316765181}
   m_Layer: 0
   m_Name: Spot
   m_TagString: Untagged
@@ -108,8 +109,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2738808567
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e83570274ac0dcd4eb2b2e5575d7607d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &316765180
@@ -118,12 +119,47 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316765178}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -.707106709, y: .000308533519, z: .000308533519, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children: []
   m_Father: {fileID: 1726146329}
   m_RootOrder: 0
+--- !u!108 &316765181
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316765178}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2.80999994
+  m_Range: 10
+  m_SpotAngle: 64.3000031
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_Softness: 4
+    m_SoftnessFade: 1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_ActuallyLightmapped: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_ShadowSamples: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_IndirectIntensity: 1
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1 &850542435
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +168,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 850542436}
+  - 114: {fileID: 850542437}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -151,6 +188,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &850542437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 850542435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa9dd6702fcc47298253149e15cb924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 100000, guid: 4e983990e03f74e46bf4779c076b31f6, type: 2}
+  walkable: {fileID: 100000, guid: 483dd82002d0940668b29264b036f92c, type: 2}
+  worldSize: 33
 --- !u!1 &1653227592
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +268,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1726146328}
   m_Mass: 10
   m_LinearDrag: .100000001
-  m_AngularDrag: .100000001
+  m_AngularDrag: .00999999978
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -254,8 +305,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2738808567
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cfa29767e89b3714bbc5e4757192d4a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1946936615

@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		rigidbody2D.fixedAngle = false; // Workaround for missing torque (was intentially set to true before)
+
 		numPlayers = System.Math.Min(maxNumPlayers, (uint)Input.GetJoystickNames().Length);
 		// TODO: 3 player not allowed
 

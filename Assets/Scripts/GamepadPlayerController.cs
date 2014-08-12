@@ -9,6 +9,8 @@ public class GamepadPlayerController : PlayerController
 	{
 		Direction = Vector2.up;
 		Speed = 0.0f;
+
+		base.Start();
 	}
 	
 	// Update is called once per frame
