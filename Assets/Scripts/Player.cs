@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
 
 	uint numPlayers = 0;
 
-	List<PlayerController> playerController = new List<PlayerController>();
+	List<PlayerController> wheelController = new List<PlayerController>();
+	GamepadPlayerController lightController;
 
 	// Use this for initialization
 	void Start ()
@@ -18,10 +19,12 @@ public class Player : MonoBehaviour
 		numPlayers = System.Math.Min(maxNumPlayers, (uint)Input.GetJoystickNames().Length);
 		// TODO: 3 player not allowed
 
-		float angleStep = Mathf.PI * 2 / numPlayers;
-		float currentAngle = 0.0f;
+		lightController = GameObject.Find("Spot").AddComponent<GamepadPlayerController>();
+		lightController.JoystickIndex = 0;
 
-		for(uint i=0; i<numPlayers; ++i)
+		float angleStep = Mathf.PI * 2 / (numPlayers-1);
+		float currentAngle = 0.0f;
+		for(uint i=1; i<numPlayers; ++i)
 		{
 			var wheelInstance = (Transform)Instantiate(wheel);
 			wheelInstance.parent = transform;
@@ -30,7 +33,7 @@ public class Player : MonoBehaviour
 
 			GamepadPlayerController player = wheelInstance.gameObject.AddComponent<GamepadPlayerController>();
 			player.JoystickIndex = i;
-			playerController.Add(player);
+			wheelController.Add(player);
 
 			currentAngle += angleStep;
 		}
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		foreach(var controller in playerController)
+		foreach(var controller in wheelController)
 		{
 			rigidbody2D.AddForceAtPosition(controller.Direction * controller.Speed, controller.transform.position);
 		}
