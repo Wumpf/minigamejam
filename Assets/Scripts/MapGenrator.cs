@@ -24,8 +24,8 @@ public class MapGenrator : MonoBehaviour {
 		}
 	}
 	
-	int rand(float x, float y) {
-		return (int)((x + Random.value) * y);
+	int rand(float from, float to) {
+		return (int)(from + Random.value * (to - from));
 	}
 	
 	void Maze(int width, int height, float complexity, float density) {
@@ -34,8 +34,8 @@ public class MapGenrator : MonoBehaviour {
 		Vector2 shape = new Vector2((height / 2) * 2 + 1, (width / 2) * 2 + 1);
 		
 		// Adjust complexity and density relative to maze size
-		complexity = (int)(complexity * (5 * (shape[0] + shape[1])));
-		density    = (int)(density * (shape[0] / 2 * shape[1] / 2));
+		int cplx = (int)(complexity * (5 * (shape[0] + shape[1])));
+		int dens = (int)(density * (shape[0] / 2 * shape[1] / 2));
 		
 		// Build actual maze           
 		int[,] Z;
@@ -50,11 +50,11 @@ public class MapGenrator : MonoBehaviour {
 		}
 
 		// Make aisles
-		for (int i = 0; i < (int)density; ++i) {
+		for (int i = 0; i < dens; ++i) {
 			int x = rand(0, shape[1] / 2) * 2; 
 			int y = rand(0, shape[0] / 2) * 2;
 			Z[y, x] = 1;
-			for (int j = 0; j < (int)complexity; ++j) {
+			for (int j = 0; j < cplx; ++j) {
 				List<Vector2> neighbours = new List<Vector2>();
 
 				if (x > 1) { 
@@ -71,8 +71,9 @@ public class MapGenrator : MonoBehaviour {
 				};
 
 				if (neighbours.Count >= 0) {
-					int y_ = (int)neighbours[rand(0, neighbours.Count - 1)].x;
-					int x_ = (int)neighbours[rand(0, neighbours.Count - 1)].y;
+					int s = rand(0, neighbours.Count - 1);
+					int y_ = (int)neighbours[s][0];
+					int x_ = (int)neighbours[s][1];
 					if (Z[y_, x_] == 0) {
 						Z[y_, x_] = 1;
 						Z[y_ + (y - y_) / 2, x_ + (x - x_) / 2] = 1;
@@ -88,7 +89,7 @@ public class MapGenrator : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Maze(worldSize, worldSize, .75f, .75f);
+		Maze(worldSize, worldSize, .2f, .5f);
 	}
 
 	
