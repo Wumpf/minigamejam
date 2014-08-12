@@ -13,9 +13,11 @@ public class MapGenrator : MonoBehaviour {
 			for (int j = 0; j < worldSize; ++j) {
 				if (world[i,j] == 0) {
 					GameObject instWall = Instantiate(wall) as GameObject;
+					instWall.transform.parent = transform;
 					instWall.transform.position = new Vector3(i * 0.32f, j * 0.32f, 0);
 				} else {
 					GameObject instWalk = Instantiate(walkable) as GameObject;
+					instWalk.transform.parent = transform;
 					instWalk.transform.position = new Vector3(i * 0.32f, j * 0.32f, 0);
 				}
 			}
