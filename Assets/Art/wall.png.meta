@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9b9a48eada67643af981ad5857f6f71c
+guid: 25ec436477994487fab2de0f3f9d085d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: sandCenter
+    21300000: wall
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +23,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 1024
+  maxTextureSize: 32
   textureSettings:
     filterMode: -1
     aniso: 1
