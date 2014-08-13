@@ -201,11 +201,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 100000, guid: 4e983990e03f74e46bf4779c076b31f6, type: 2}
   walkable: {fileID: 100000, guid: 483dd82002d0940668b29264b036f92c, type: 2}
+  destination: {fileID: 100000, guid: a538396410f344246abbf1ae7ac31b09, type: 2}
   worldSize: 33
   tileSize: 1
-  tileScale: 1.5
+  tileScale: 2
   density: .75
   complexity: .75
+  startPosition: {x: 1, y: 1}
+  minimalLength: 15
+  nodes: []
 --- !u!1 &1358904244
 GameObject:
   m_ObjectHideFlags: 0
