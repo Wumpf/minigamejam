@@ -9,6 +9,8 @@ public class MapGenrator : MonoBehaviour {
 	public int worldSize = 33;
 	public float tileSize = 0.32f;
 	public float tileScale = 4.0f;
+	public float density = .75f;
+	public float complexity = .75f;
 	
 	void display(int[,] world) {
 		for (int i = 0; i < worldSize; ++i) {
@@ -26,11 +28,7 @@ public class MapGenrator : MonoBehaviour {
 			}
 		}
 	}
-	
-	int rand(float x, float y) {
-		return (int)((x + Random.value) * y);
-	}
-	
+
 	void Maze(int width, int height, float complexity, float density) {
 		
 		//only odd shapes
@@ -54,8 +52,8 @@ public class MapGenrator : MonoBehaviour {
 
 		// Make aisles
 		for (int i = 0; i < (int)density; ++i) {
-			int x = rand(0, shape[1] / 2) * 2; 
-			int y = rand(0, shape[0] / 2) * 2;
+			int x = (int)Random.Range(0, shape[1] / 2) * 2; 
+			int y = (int)Random.Range(0, shape[0] / 2) * 2;
 			Z[y, x] = 1;
 			for (int j = 0; j < (int)complexity; ++j) {
 				List<Vector2> neighbours = new List<Vector2>();
@@ -74,14 +72,25 @@ public class MapGenrator : MonoBehaviour {
 				};
 
 				if (neighbours.Count >= 0) {
-					int y_ = (int)neighbours[rand(0, neighbours.Count - 1)].x;
-					int x_ = (int)neighbours[rand(0, neighbours.Count - 1)].y;
+					int y_ = (int)neighbours[(int)Random.Range(0, neighbours.Count - 1)].x;
+					int x_ = (int)neighbours[(int)Random.Range(0, neighbours.Count - 1)].y;
 					if (Z[y_, x_] == 0) {
 						Z[y_, x_] = 1;
-						Z[y_ + (y - y_) / 2, x_ + (x - x_) / 2] = 1;
+						if (x_ > x) {
+							Z[x+1, y] = 1;
+						}
+						if (x_ < x) {
+							Z[x-1, y] = 1;
+						}
+						if (y_ > y) {
+							Z[x, y+1] = 1;
+						}
+						if (y_ < y) {
+							Z[x, y-1] = 1;
+						}
 						x = x_;
 						y = y_;
-					}				  
+					}		  
 				}
 			}
 		}
@@ -91,7 +100,7 @@ public class MapGenrator : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Maze(worldSize, worldSize, .75f, .75f);
+		Maze(worldSize, worldSize, complexity, density);
 	}
 
 	
