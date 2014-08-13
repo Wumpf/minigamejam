@@ -20,7 +20,8 @@ public class MapGenrator : MonoBehaviour {
 					inst = Instantiate(walkable) as GameObject;
 				}
 				inst.transform.parent = transform;
-				inst.transform.position = new Vector3(i * tileSize * tileScale, j * tileSize * tileScale, 0);
+				inst.transform.position = new Vector3(i * tileSize * tileScale, j * tileSize * tileScale,
+				                                      	-0.5f * tileSize * tileScale * inst.transform.localScale.z);
 				inst.transform.localScale *= tileScale;
 			}
 		}

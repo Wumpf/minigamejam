@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: f7e04e48ba9654b3f82fe3d24da35ff5
+guid: 7c342e59f0b6f214f875621f94ace10b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: walkable
+    21300000: m-016-018-bg
+    21300002: floor
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,9 +24,9 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 32
+  maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
+    filterMode: 2
     aniso: 1
     mipBias: -1
     wrapMode: 1
