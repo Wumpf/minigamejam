@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 	void Update()
 	{
 		Camera.main.transform.position = Vector3.Lerp(transform.position, Camera.main.transform.position, Mathf.Exp(-Time.deltaTime * cameraSmoothness));
-		Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -15);
+		Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -5);
 		Camera.main.transform.LookAt(transform.position);
 
 		foreach(var controller in wheelController)
