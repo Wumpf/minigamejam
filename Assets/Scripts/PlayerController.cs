@@ -18,7 +18,9 @@ abstract public class PlayerController : MonoBehaviour
 		float angle = Mathf.Atan2(Direction.x, -Direction.y) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)) * baseRotation;
 		
-		gameObject.GetComponentInChildren<ParticleSystem>().enableEmission = Speed > 0;
+		ParticleSystem particleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
+		if(particleSystem != null)
+			particleSystem.enableEmission = Speed > 0;
 	}
 
 
