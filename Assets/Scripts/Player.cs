@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 	public Transform wheel;
 	
 	const uint maxNumPlayers = 5;
-	const float wheelBodyDistance = 0.8f;
+	const float wheelBodyDistance = 0.9f;
 	const float cameraSmoothness = 0.5f;
 
 	uint numPlayers = 0;

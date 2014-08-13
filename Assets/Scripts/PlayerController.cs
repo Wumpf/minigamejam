@@ -15,8 +15,10 @@ abstract public class PlayerController : MonoBehaviour
 	public virtual void Update()
 	{
 		Direction.Normalize();
-		float angle = Mathf.Atan2(-Direction.x, Direction.y) * Mathf.Rad2Deg;
+		float angle = Mathf.Atan2(Direction.x, -Direction.y) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)) * baseRotation;
+		
+		gameObject.GetComponentInChildren<ParticleSystem>().enableEmission = Speed > 0;
 	}
 
 

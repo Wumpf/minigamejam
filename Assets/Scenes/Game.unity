@@ -204,6 +204,8 @@ MonoBehaviour:
   worldSize: 33
   tileSize: 1
   tileScale: 1.5
+  density: .75
+  complexity: .75
 --- !u!1 &1358904244
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8ebd6ebb6d5a40a513f8e2cc751aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheel: {fileID: 400000, guid: 78c33469aadfe3449acd5af84f6b992a, type: 2}
+  wheel: {fileID: 400002, guid: 8c680fee9ad7f1d4aad7e45f1642b310, type: 2}
 --- !u!23 &1726146332
 Renderer:
   m_ObjectHideFlags: 0
