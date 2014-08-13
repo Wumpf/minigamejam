@@ -18,7 +18,7 @@ public class Standing : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "InvisTriangle")
             timer = isSeenTimer;
     }
     void OnTriggerStay2D(Collider2D coll)
