@@ -174,7 +174,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316765178}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalRotation: {x: .677862465, y: 0, z: 0, w: -.735188842}
   m_LocalPosition: {x: 0, y: 0, z: -.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -192,7 +192,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 20
-  m_SpotAngle: 75
+  m_SpotAngle: 60
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 850542435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -257,7 +257,7 @@ MonoBehaviour:
   wall: {fileID: 100000, guid: 4e983990e03f74e46bf4779c076b31f6, type: 2}
   walkable: {fileID: 100000, guid: 483dd82002d0940668b29264b036f92c, type: 2}
   worldSize: 33
-  tileSize: .319999993
+  tileSize: 1
   tileScale: 1
 --- !u!1 &984164488
 GameObject:
@@ -341,7 +341,7 @@ Transform:
   m_Children:
   - {fileID: 76969789}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1001 &1649476419
 Prefab:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1726146328
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,8 +486,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1726146328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.74262536, y: .00548318774, z: 0}
-  m_LocalScale: {x: .492403656, y: .492403924, z: 1}
+  m_LocalPosition: {x: 1.61033964, y: .0193196461, z: 0}
+  m_LocalScale: {x: .382200807, y: .382200748, z: 1}
   m_Children:
   - {fileID: 316765180}
   m_Father: {fileID: 0}
@@ -654,7 +654,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 4
   m_Depth: -1
   m_CullingMask:
@@ -674,7 +674,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1946936615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

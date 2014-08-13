@@ -21,7 +21,7 @@ public class MapGenrator : MonoBehaviour {
 				}
 				inst.transform.parent = transform;
 				inst.transform.position = new Vector3(i * tileSize * tileScale, j * tileSize * tileScale, 0);
-				inst.transform.localScale = new Vector3(tileScale,tileScale,1);
+				inst.transform.localScale *= tileScale;
 			}
 		}
 	}
