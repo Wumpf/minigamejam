@@ -6,7 +6,7 @@ public class CEnemySpawner : MonoBehaviour {
     float mNextSpawnTime;
     public float mSpwanTime =100;
     
-    public Bounds mBounds = new Bounds(Vector3.zero, new Vector3(5,5,0));
+    public Bounds mBounds = new Bounds(new Vector3(0,0,2), new Vector3(5,5,2));
     
     // Use this for initialization
     void Start ()

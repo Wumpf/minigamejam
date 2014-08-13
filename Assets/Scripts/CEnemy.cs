@@ -5,16 +5,18 @@ using System.Collections;
 public class CEnemy : MonoBehaviour {
     
     public Vector3 m_Pos;
-    public float m_speed=0.5f;
+    public float m_speed;
     public float mScale =0.1f;
     public bool isseen;
     Vector3 direction;
     float lifetime;
     public EnemySpotRangeScript spotting;
+    public Standing stand;
     
     void Start () {
         isseen = false;
         lifetime = 0;
+        m_speed = 0.5f;
         this.transform.localScale = new Vector3 (0.1f,0.1f,0.1f);
     }
     
@@ -22,14 +24,17 @@ public class CEnemy : MonoBehaviour {
     void Update () {
         if (spotting.spotted)
             Debug.Log("Player spotted");
-        
+        if (stand.isSeen)
+            Debug.Log("Stand Still");
         lifetime ++;
-        if (isseen) 
+        if (stand.isSeen) 
         {
             m_speed = 0;
+            return;
         }
         else 
         {
+            m_speed =0.1f;
             if(spotting.spotted)
             {
                 Vector3 p= GameObject.Find("Player").transform.position;
@@ -39,8 +44,7 @@ public class CEnemy : MonoBehaviour {
                 return;
             }
             
-            
-            m_speed = 0.1f;
+
             if(lifetime%2==0){
                 int i = 1;
                 
@@ -63,7 +67,8 @@ public class CEnemy : MonoBehaviour {
             Player p = coll.gameObject.GetComponent<Player>();
             GameSingelton.instance.mHealth--;
         }
-        
-        
     }
+
+ 
+        
 }
