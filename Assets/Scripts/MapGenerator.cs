@@ -126,52 +126,57 @@ public class MapGenerator : MonoBehaviour {
 
 	int[,] dist;
 
-	bool BFS(Vector2 start, int minLength, int[,] maze) {
-		Queue<Vector2> q = new Queue<Vector2>();
+	void BFS(Vector2 start, int minLength, int[,] maze) {
+		List<Vector2> q = new List<Vector2>();
 		dist = new int[worldSize, worldSize];
-		int count = 0;
 
-		q.Enqueue(start);
+		q.Add(start);
 
 		while(q.Count > 0) {
 
-			Vector2 node = q.Dequeue();
+			Vector2 node = q[0];
+			int rmInd = 0;
+			for (int i = 1; i < q.Count; ++i) {
+				if (dist[(int)q[i].x, (int)q[i].y] < dist[(int)node.x, (int)node.y]) {
+					node = q[i];
+					rmInd = i;
+				}
+			}
+			q.RemoveAt(rmInd);
+
 			foreach (Vector2 child in getNeighbours(node, maze)) {
-				if (count == minLength) {
-					return true;
-				}
-				++count;
+				int alt = dist[(int)node.x, (int)node.y] + 1;
 
-				int t = dist[(int)child.x, (int)child.y];
-				int alt = t + 1;
+				int childDist = dist[(int)child.x, (int)child.y];
 
-				if (t == 0) {
+				if (childDist == 0) {
 					dist[(int)child.x, (int)child.y] = alt;
-					q.Enqueue(child);
-				}
-
-				if (q.Contains(child) && alt > t) {
+					q.Add(child);
+				} else if (q.Contains(child) && alt < childDist) {
 					dist[(int)child.x, (int)child.y] = alt;
-					q.Enqueue(child);
 				}
 			}
 
 		}
-		return false;
+		//return false;
 	}
 
 	void PositionPlayer(Vector2 position) {
 		GameObject player = GameObject.Find("Player");
 		player.transform.position = new Vector3(position.x, position.y, player.transform.position.z);
 	}
+
+	void PositionSpawner() {
+		GameObject spawner = GameObject.Find("_Spawner");
+		spawner.GetComponent<CEnemySpawner>().mBounds = new Bounds(new Vector3((worldSize*tileSize*tileScale)/2, (worldSize*tileSize*tileScale)/2, 0), 
+		                                                           new Vector3(worldSize*tileSize*tileScale, worldSize*tileSize*tileScale));
+	}
 	
 	// Use this for initialization
 	void Start () 
 	{
 		int[,] maze = Maze(worldSize, worldSize, complexity, density);
-		while (!BFS(startPosition, minimalLength, maze)) {
-			maze = Maze(worldSize, worldSize, complexity, density);
-		}
+		BFS(startPosition, minimalLength, maze);
 
 		//Vector3 destination = nodes.Find(x => x.z == nodes.Max(y => y.z));
 
@@ -190,7 +195,7 @@ public class MapGenerator : MonoBehaviour {
 		maze[(int)tempMax.x, (int)tempMax.y] = 3;
 		Display(maze);
 		PositionPlayer(startPosition);
-
+		PositionSpawner();
 	}
 	
 	// Update is called once per frame
