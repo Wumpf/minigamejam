@@ -6,7 +6,7 @@ public class CEnemySpawner : MonoBehaviour {
     float mNextSpawnTime;
     public float mSpwanTime =100;
     
-    public Bounds mBounds = new Bounds(new Vector3(0,0,2), new Vector3(5,5,2));
+    public Bounds mBounds = new Bounds(new Vector3(30,30,2), new Vector3(22,22,0));
     
     // Use this for initialization
     void Start ()
@@ -30,7 +30,7 @@ public class CEnemySpawner : MonoBehaviour {
     {
         if (mNextSpawnTime <= 0) {
             //spawn
-            Debug.Log ("Spawn");
+           // Debug.Log ("Spawn");
             mNextSpawnTime = mSpwanTime;
             Spawner();
         }

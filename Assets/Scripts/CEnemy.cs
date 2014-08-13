@@ -67,7 +67,7 @@ public class CEnemy : MonoBehaviour {
             Player p = coll.gameObject.GetComponent<Player>();
             GameSingelton.instance.mHealth--;
 			GameObject.Destroy (this.gameObject);
-            Debug.Log("Delete this");
+           // Debug.Log("Delete this");
         }
     }
 

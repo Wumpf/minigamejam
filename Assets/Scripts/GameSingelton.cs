@@ -6,7 +6,7 @@ public class GameSingelton : Singelton<GameSingelton>  {
 	public GameObject[] mEnemy;
 	public GUISkin mguiskin;
 
-	const int kmaxHealth = 5;
+	const int kmaxHealth = 1;
 	public int mHealth = kmaxHealth;
 	void Start(){
 		GameObject.DontDestroyOnLoad (this.gameObject);
