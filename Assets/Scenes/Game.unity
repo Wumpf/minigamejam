@@ -190,9 +190,9 @@ Light:
   serializedVersion: 3
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.98000002
+  m_Intensity: 1
   m_Range: 20
-  m_SpotAngle: 73.4000015
+  m_SpotAngle: 75
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -257,6 +257,8 @@ MonoBehaviour:
   wall: {fileID: 100000, guid: 4e983990e03f74e46bf4779c076b31f6, type: 2}
   walkable: {fileID: 100000, guid: 483dd82002d0940668b29264b036f92c, type: 2}
   worldSize: 33
+  tileSize: .319999993
+  tileScale: 1
 --- !u!1 &984164488
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,8 +486,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1726146328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.86576295, y: -.108697757, z: 0}
-  m_LocalScale: {x: .64457655, y: .64457649, z: 1}
+  m_LocalPosition: {x: 1.74262536, y: .00548318774, z: 0}
+  m_LocalScale: {x: .492403656, y: .492403924, z: 1}
   m_Children:
   - {fileID: 316765180}
   m_Father: {fileID: 0}

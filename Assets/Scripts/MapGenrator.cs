@@ -7,19 +7,21 @@ public class MapGenrator : MonoBehaviour {
 	public GameObject wall;
 	public GameObject walkable;
 	public int worldSize = 33;
-
+	public float tileSize = 0.32f;
+	public float tileScale = 4.0f;
+	
 	void display(int[,] world) {
 		for (int i = 0; i < worldSize; ++i) {
 			for (int j = 0; j < worldSize; ++j) {
+				GameObject inst;
 				if (world[i,j] == 0) {
-					GameObject instWall = Instantiate(wall) as GameObject;
-					instWall.transform.parent = transform;
-					instWall.transform.position = new Vector3(i * 0.32f, j * 0.32f, 0);
+					inst = Instantiate(wall) as GameObject;
 				} else {
-					GameObject instWalk = Instantiate(walkable) as GameObject;
-					instWalk.transform.parent = transform;
-					instWalk.transform.position = new Vector3(i * 0.32f, j * 0.32f, 0);
+					inst = Instantiate(walkable) as GameObject;
 				}
+				inst.transform.parent = transform;
+				inst.transform.position = new Vector3(i * tileSize * tileScale, j * tileSize * tileScale, 0);
+				inst.transform.localScale = new Vector3(tileScale,tileScale,1);
 			}
 		}
 	}
