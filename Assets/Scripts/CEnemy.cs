@@ -9,15 +9,13 @@ public class CEnemy : MonoBehaviour {
     public float mScale =0.1f;
     public bool isseen;
     Vector3 direction;
-    float lifetime;
+
     public EnemySpotRangeScript spotting;
     public Standing stand;
-    
+    float lastUpdate;
     void Start () {
         isseen = false;
-        lifetime = 0;
-        m_speed = 0.5f;
-        this.transform.localScale = new Vector3 (0.1f,0.1f,0.1f);
+        this.transform.localScale = new Vector3 (0.05f,0.05f,0.05f);
     }
     
     // Update is called once per frame
@@ -26,7 +24,7 @@ public class CEnemy : MonoBehaviour {
             Debug.Log("Player spotted");
         if (stand.isSeen)
             Debug.Log("Stand Still");
-        lifetime ++;
+
         if (stand.isSeen) 
         {
             m_speed = 0;
@@ -34,29 +32,30 @@ public class CEnemy : MonoBehaviour {
         }
         else 
         {
-            m_speed =0.1f;
+            m_speed =1f;
             if(spotting.spotted)
             {
                 Vector3 p= GameObject.Find("Player").transform.position;
                 direction = (this.transform.localPosition - p).normalized;
                 
-                this.transform.localPosition -=direction.normalized*m_speed;
+                this.transform.localPosition -=direction.normalized*m_speed*Time.deltaTime;
                 return;
             }
             
 
-            if(lifetime%2==0){
-                int i = 1;
+           // if(lifetime%2==0){
+               
                 
-                if(lifetime%5==0)
+                if(Time.time-lastUpdate>0.5f)
                 {
-                    i=(Random.value * 10 > 5)?-1:1;
-                    float rand=Mathf.Sin(Mathf.PI*Random.value);
-                    float rand2=Mathf.Cos(Mathf.PI*Random.value);
-                    direction = i*m_speed*new Vector3(rand,rand2,0);
+                   
+                    float rand=Mathf.Sin(2*Mathf.PI*Random.value);
+                    float rand2=Mathf.Cos(2*Mathf.PI*Random.value);
+                    direction = new Vector3(rand,rand2,0);
+                    lastUpdate=Time.time;
                 }
-                this.transform.localPosition += direction;
-            }
+                this.transform.localPosition += direction*m_speed*Time.deltaTime;
+           // }
         }
     }
     void OnCollisionEnter2D(Collision2D coll)
