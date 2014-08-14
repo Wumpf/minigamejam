@@ -8,4 +8,10 @@ Control your drone (thrusterized donut!!!) savely through the maze. But beware! 
 Each player controlls one of up to four thrusters with the left analog stick, thrust is activated with the A (Action) button.
 Another player controlls the spot light mounted in the middle of the drone. Pointed at a ghost, it will immediately freeze it as long as it is lit.
 
+[PLAY NOW](http://wumpf.github.io/minigamejam/)
+=================
+
 ![screenshot](screenshot.jpg)
+
+
+
