@@ -1,4 +1,0 @@
-minigamejam
-===========
-
-Mini GameJam
