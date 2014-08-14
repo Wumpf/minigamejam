@@ -16,11 +16,11 @@ public class MapGenerator : MonoBehaviour {
 	public float complexity = .75f;
 
 	public Vector2 startPosition = new Vector2(1, 1);
-	public int minimalLength = 15;
 
 	public List<Vector3> nodes;
 
 	void Display(int[,] world) {
+		bool createDest = false;
 		for (int i = 0; i < worldSize; ++i) {
 			for (int j = 0; j < worldSize; ++j) {
 				GameObject inst;
@@ -30,11 +30,16 @@ public class MapGenerator : MonoBehaviour {
 					inst = Instantiate(walkable) as GameObject;
 				} else {
 					inst = Instantiate(destination) as GameObject;
+					createDest = true;
 				}
 				inst.transform.parent = transform;
 				inst.transform.position = new Vector3(i * tileSize * tileScale, j * tileSize * tileScale,
 				                                      	-0.5f * tileSize * tileScale * inst.transform.localScale.z);
 				inst.transform.localScale *= tileScale;
+				if (createDest) {
+					GameObject.Find("DirectionArrow").GetComponent<ArrowController>().destinationPosition = inst.transform;
+					createDest = false;
+				}
 			}
 		}
 	}
@@ -126,7 +131,7 @@ public class MapGenerator : MonoBehaviour {
 
 	int[,] dist;
 
-	void BFS(Vector2 start, int minLength, int[,] maze) {
+	void BFS(Vector2 start, int[,] maze) {
 		List<Vector2> q = new List<Vector2>();
 		dist = new int[worldSize, worldSize];
 
@@ -158,7 +163,6 @@ public class MapGenerator : MonoBehaviour {
 			}
 
 		}
-		//return false;
 	}
 
 	void PositionPlayer(Vector2 position) {
@@ -176,9 +180,7 @@ public class MapGenerator : MonoBehaviour {
 	void Start () 
 	{
 		int[,] maze = Maze(worldSize, worldSize, complexity, density);
-		BFS(startPosition, minimalLength, maze);
-
-		//Vector3 destination = nodes.Find(x => x.z == nodes.Max(y => y.z));
+		BFS(startPosition, maze);
 
 		Vector3 tempMax = new Vector3(0,0,0);
 		for (int i=0; i < worldSize; ++i) {
@@ -196,6 +198,7 @@ public class MapGenerator : MonoBehaviour {
 		Display(maze);
 		PositionPlayer(startPosition);
 		PositionSpawner();
+
 	}
 	
 	// Update is called once per frame
