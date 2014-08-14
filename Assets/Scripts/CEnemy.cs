@@ -36,26 +36,18 @@ public class CEnemy : MonoBehaviour {
             if(spotting.spotted)
             {
                 Vector3 p= GameObject.Find("Player").transform.position;
-                direction = (this.transform.localPosition - p).normalized;
-                
-                this.transform.localPosition -=direction.normalized*m_speed*Time.deltaTime;
-                return;
+                direction = -(this.transform.localPosition - p).normalized;
             }
-            
-
-           // if(lifetime%2==0){
-               
-                
-                if(Time.time-lastUpdate>0.5f)
-                {
-                   
-                    float rand=Mathf.Sin(2*Mathf.PI*Random.value);
-                    float rand2=Mathf.Cos(2*Mathf.PI*Random.value);
-                    direction = new Vector3(rand,rand2,0);
-                    lastUpdate=Time.time;
-                }
-                this.transform.localPosition += direction*m_speed*Time.deltaTime;
-           // }
+             
+	        else if(Time.time-lastUpdate>0.5f)
+	        {
+	           
+	            float rand=Mathf.Sin(2*Mathf.PI*Random.value);
+	            float rand2=Mathf.Cos(2*Mathf.PI*Random.value);
+	            direction = new Vector3(rand,rand2,0);
+	            lastUpdate=Time.time;
+	        }
+	        this.transform.localPosition += direction*m_speed*Time.deltaTime;
         }
     }
     void OnCollisionEnter2D(Collision2D coll)

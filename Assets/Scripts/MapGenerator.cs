@@ -196,7 +196,7 @@ public class MapGenerator : MonoBehaviour {
 
 		maze[(int)tempMax.x, (int)tempMax.y] = 3;
 		Display(maze);
-		PositionPlayer(startPosition);
+		PositionPlayer(startPosition * tileSize * tileScale);
 		PositionSpawner();
 
 	}
