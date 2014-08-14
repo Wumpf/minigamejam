@@ -399,7 +399,7 @@ MonoBehaviour:
   tileSize: 1
   tileScale: 2
   density: .75
-  complexity: .75
+  complexity: .74000001
   startPosition: {x: 1, y: 1}
   nodes: []
 --- !u!1 &1358904244
