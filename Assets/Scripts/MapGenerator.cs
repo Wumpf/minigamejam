@@ -172,7 +172,7 @@ public class MapGenerator : MonoBehaviour {
 
 	void PositionSpawner() {
 		GameObject spawner = GameObject.Find("_Spawner");
-		spawner.GetComponent<CEnemySpawner>().mBounds = new Bounds(new Vector3((worldSize*tileSize*tileScale)/2, (worldSize*tileSize*tileScale)/2, 0), 
+		spawner.GetComponent<CEnemySpawner>().mBounds = new Bounds(new Vector3((worldSize*tileSize*tileScale)/2, (worldSize*tileSize*tileScale)/2, -2), 
 		                                                           new Vector3(worldSize*tileSize*tileScale, worldSize*tileSize*tileScale));
 	}
 	
