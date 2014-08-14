@@ -14,7 +14,10 @@ public class ArrowController : MonoBehaviour {
 	void Update () {
 		Vector3 cameraTransform = GameObject.Find("Player").transform.position;
 		this.transform.position = new Vector3(cameraTransform.x, cameraTransform.y, this.transform.position.z);
-		this.transform.LookAt(destinationPosition);
-		this.transform.Rotate(0,90,180);
+
+		Vector3 direction = destinationPosition.position - this.transform.position;
+		direction.Normalize();
+		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 	}
 }
